@@ -62,15 +62,19 @@ export function OrderModal({ product, farmData, onClose, lang = 'en' }) {
             <div className="p-4 rounded-xl bg-[#000000] border border-[#222226] flex items-center gap-4">
               <img 
                 src={product.image} 
-                alt={product.name} 
+                alt={typeof product.name === 'object' ? (product.name[lang] || product.name.en) : product.name} 
                 className="w-16 h-16 rounded-lg object-cover border border-[#222226] flex-shrink-0"
               />
               <div className="flex-1 space-y-1">
                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-[#B27BFF]/15 text-[#B27BFF] font-medium">
-                  {product.category}
+                  {typeof product.category === 'object' ? (product.category[lang] || product.category.en) : product.category}
                 </span>
-                <h4 className="text-sm font-bold text-white leading-snug">{product.name}</h4>
-                <div className="text-xs text-[#9CA3AF]">{product.unit}</div>
+                <h4 className="text-sm font-bold text-white leading-snug">
+                  {typeof product.name === 'object' ? (product.name[lang] || product.name.en) : product.name}
+                </h4>
+                <div className="text-xs text-[#9CA3AF]">
+                  {typeof product.unit === 'object' ? (product.unit[lang] || product.unit.en) : product.unit}
+                </div>
                 <div className="text-sm font-black text-[#B27BFF] font-mono">
                   {product.price} EGP <span className="text-[11px] text-gray-500 line-through">{product.originalPrice} EGP</span>
                 </div>
@@ -186,7 +190,9 @@ export function OrderModal({ product, farmData, onClose, lang = 'en' }) {
             <div className="p-4 rounded-xl bg-[#000000] border border-[#1F1F24] text-xs text-start space-y-2.5">
               <div className="flex justify-between">
                 <span className="text-[#9CA3AF]">{t.productLabel}</span>
-                <span className="text-white font-bold">{product.name} (x{quantity})</span>
+                <span className="text-white font-bold">
+                  {typeof product.name === 'object' ? (product.name[lang] || product.name.en) : product.name} (x{quantity})
+                </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-[#9CA3AF]">{t.supplierLabel}</span>

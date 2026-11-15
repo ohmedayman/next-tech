@@ -671,8 +671,10 @@ export function MoghraModule({ lang = 'en', onOrderProduct, onReturnDashboard })
         <OrderModal 
           product={{
             ...selectedProductForOrder,
-            name: selectedProductForOrder.name[lang],
-            unit: selectedProductForOrder.unit[lang]
+            name: typeof selectedProductForOrder.name === 'object' ? (selectedProductForOrder.name[lang] || selectedProductForOrder.name.en) : selectedProductForOrder.name,
+            category: typeof selectedProductForOrder.category === 'object' ? (selectedProductForOrder.category[lang] || selectedProductForOrder.category.en) : selectedProductForOrder.category,
+            unit: typeof selectedProductForOrder.unit === 'object' ? (selectedProductForOrder.unit[lang] || selectedProductForOrder.unit.en) : selectedProductForOrder.unit,
+            badge: typeof selectedProductForOrder.badge === 'object' ? (selectedProductForOrder.badge[lang] || selectedProductForOrder.badge.en) : selectedProductForOrder.badge
           }}
           farmData={{
             farmName: lang === 'ar' ? 'مزرعة المغرة النموذجية' : 'Moghra Model Farm',
@@ -680,6 +682,7 @@ export function MoghraModule({ lang = 'en', onOrderProduct, onReturnDashboard })
             size: 25
           }}
           onClose={() => setSelectedProductForOrder(null)}
+          lang={lang}
         />
       )}
 
