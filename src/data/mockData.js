@@ -1,0 +1,272 @@
+// Data for Nex Tech - المساعد الزراعي الذكي
+
+export const GOVERNORATES = [
+  { id: 'moghra', name: 'أراضي المغرة (مشروع 1.5 مليون فدان - ملوحة عالية وقلوية)' },
+  { id: 'fayoum', name: 'الفيوم (واحة خصبة وتربة غرينية)' },
+  { id: 'beheira', name: 'البحيرة (الدلتا وأراضي الاستصلاح)' },
+  { id: 'dakahlia', name: 'الدقهلية (وسط الدلتا)' },
+  { id: 'new_valley', name: 'الوادي الجديد (شرق العوينات والفرافرة)' },
+  { id: 'sharqia', name: 'الشرقية (الصالحية والخطارة)' },
+  { id: 'kafr_sheikh', name: 'كفر الشيخ (شمال الدلتا)' },
+  { id: 'minya', name: 'المنيا (أراضي غرب المنيا)' },
+  { id: 'ismailia', name: 'الإسماعيلية (أراضي القناة)' },
+  { id: 'nubaria', name: 'النوبارية وطريق مصر إسكندرية الصحراوي' },
+];
+
+export const CROPS = [
+  { id: 'wheat', name: 'قمح', category: 'حبوب', season: 'شتوي', idealMoisture: '35% - 50%' },
+  { id: 'tomato', name: 'طماطم', category: 'خضروات', season: 'عروات متعددة', idealMoisture: '50% - 65%' },
+  { id: 'potato', name: 'بطاطس', category: 'درنات', season: 'شتوي/صيفي', idealMoisture: '45% - 60%' },
+  { id: 'corn', name: 'ذرة صفراء', category: 'حبوب', season: 'صيفي', idealMoisture: '40% - 55%' },
+  { id: 'citrus', name: 'موالح وبرتقال', category: 'أشجار', season: 'دائم', idealMoisture: '45% - 55%' },
+  { id: 'strawberry', name: 'فراولة', category: 'فاكهة', season: 'شتوي', idealMoisture: '60% - 70%' },
+  { id: 'olive', name: 'زيتون ونخيل', category: 'أشجار صحراوية', season: 'دائم', idealMoisture: '25% - 40%' },
+];
+
+export const MOCK_DIAGNOSES = [
+  {
+    id: 'powdery_mildew',
+    name: 'إصابة بفطر البياض الدقيقي',
+    scientificName: 'Erysiphales / Leveillula taurica',
+    crop: 'طماطم وخضروات',
+    severity: 'متوسطة',
+    severityColor: 'amber',
+    confidence: 96,
+    symptoms: 'ظهور مسحوق أبيض دقيقي على الأسطح العلوية والسفلية للأوراق مع اصفرار وتجعد الأطراف.',
+    nasaCorrelation: 'ارتفاع الرطوبة النسبية ليلاً (78%) مع اعتدال الحرارة نهاراً يُهيئ البيئة المثالية لتكاثر الجراثيم.',
+    recommendation: 'الرش الفوري بمبيد فطري جهازي متخصص، وتخفيف كثافة الأوراق لزيادة التهوية وتقليل فترات الرطوبة.',
+    recommendedProducts: ['prod-1', 'prod-2'],
+    leafImage: 'https://images.unsplash.com/photo-1592417817098-8f3d6ef23a05?auto=format&fit=crop&w=600&q=80',
+    tags: ['فطري', 'علاج عاجل', 'شائع بالدلتا والفيوم']
+  },
+  {
+    id: 'wheat_rust',
+    name: 'إصابة بالصدأ الأصفر (صدأ المخطط)',
+    scientificName: 'Puccinia striiformis',
+    crop: 'قمح',
+    severity: 'حرجة',
+    severityColor: 'red',
+    confidence: 94,
+    symptoms: 'بثور مسحوقية صفراء ممتدة في خطوط طولية متوازية مع عروق الورقة تسبب جفاف الورقة بالكامل.',
+    nasaCorrelation: 'رصد تيار هوائي بارد ورطب عبر الأقمار الصناعية زاد من سرعة انتشار الأبواغ بنسبة 35%.',
+    recommendation: 'الرش الوقائي والعلاجي فوراً خلال 48 ساعة بمبيد ثلاثي الآزول قبل وصول العدوى للسنبلة.',
+    recommendedProducts: ['prod-3', 'prod-5'],
+    leafImage: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=600&q=80',
+    tags: ['محصول استراتيجي', 'عدوى سريعة', 'خطر عالي']
+  },
+  {
+    id: 'late_blight',
+    name: 'إصابة بمرض اللفحة المتأخرة',
+    scientificName: 'Phytophthora infestans',
+    crop: 'بطاطس وطماطم',
+    severity: 'حرجة',
+    severityColor: 'red',
+    confidence: 91,
+    symptoms: 'بقع بنية داكنة مائية غير منتظمة على حواف الأوراق مع عفن أبيض خفيف عند ارتفاع الرطوبة.',
+    nasaCorrelation: 'انخفاض درجات الحرارة لـ 13°م مع شبورة مائية صباحية رصدها قمر MODIS.',
+    recommendation: 'استخدام مبيد نحاسي وقائي مصحوب بمركب جهازي مثل مانكوزيب وميتالاكسيل ووقف الرش الرذاذي.',
+    recommendedProducts: ['prod-1', 'prod-5'],
+    leafImage: 'https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=600&q=80',
+    tags: ['أمراض بكتيرية وفطرية', 'طوارئ زراعية']
+  },
+  {
+    id: 'healthy_leaf',
+    name: 'ورقة سليمة ونشطة بيولوجياً',
+    scientificName: 'Vegetation Index Optimal',
+    crop: 'طبيعي',
+    severity: 'سليم',
+    severityColor: 'emerald',
+    confidence: 99,
+    symptoms: 'لون أخضر داكن متجانس، خلو تام من التبقعات أو الحروق الحافة، كفاءة تمثيل ضوئي قصوى.',
+    nasaCorrelation: 'مؤشر الكلوروفيل عبر Sentinel-2 يسجل 0.82 (مستوى نمو استثنائي).',
+    recommendation: 'الاستمرار على جدول الري الفضائي المبرمج، وتغذية خفيفة بالأحماض الأمينية والبوتاسيوم.',
+    recommendedProducts: ['prod-4', 'prod-6'],
+    leafImage: 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=600&q=80',
+    tags: ['محصول صحي', 'إنتاجية واعدة']
+  }
+];
+
+export const PRODUCTS = [
+  {
+    id: 'prod-1',
+    name: 'ميلانو-فيت 500 (Milano-Phyte)',
+    supplier: 'شركة ميلانو للمستلزمات الزراعية',
+    category: 'مبيدات فطرية جهازية',
+    activeIngredient: 'فوستيل الألومنيوم + هيمكسازول',
+    price: 380,
+    originalPrice: 450,
+    unit: 'عبوة 1 لتر مركز',
+    rating: 4.9,
+    reviewsCount: 142,
+    badge: 'الأكثر مبيعاً للفيوم والدلتا',
+    recommendedFor: 'البياض الدقيقي وأعفان الجذور واللفحات',
+    dosage: '1.5 سم لكل لتر ماء',
+    deliveryDays: 'شحن فوري (خلال 24 ساعة للمزرعة)',
+    stock: 48,
+    image: 'https://images.unsplash.com/photo-1585314062340-f1a5a7c9328d?auto=format&fit=crop&w=500&q=80'
+  },
+  {
+    id: 'prod-2',
+    name: 'سوبر ميلانو كبريت ميكروني 80%',
+    supplier: 'شركة ميلانو للمستلزمات الزراعية',
+    category: 'مبيدات وقائية ومخصبات',
+    activeIngredient: 'كبريت نقي دقيق التجزئة 80%',
+    price: 220,
+    originalPrice: 260,
+    unit: 'شيكارة 5 كجم',
+    rating: 4.8,
+    reviewsCount: 98,
+    badge: 'وقائي ممتاز للصقيع',
+    recommendedFor: 'مقاومة الصقيع والوقاية من الفطريات والعناكب',
+    dosage: '250 جم لكل 100 لتر ماء',
+    deliveryDays: 'شحن فوري (خلال 24-48 ساعة)',
+    stock: 75,
+    image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80'
+  },
+  {
+    id: 'prod-3',
+    name: 'توبسين ميلانو إكسترا (Topsin M)',
+    supplier: 'شركة ميلانو بالتعاون مع التوكيلات المعتمدة',
+    category: 'مبيدات أصداء ولفحات الحبوب',
+    activeIngredient: 'ثيوفانات ميثيل 70% WP',
+    price: 450,
+    originalPrice: 510,
+    unit: 'عبوة 1 كجم بودرة قابلة للبلل',
+    rating: 4.9,
+    reviewsCount: 215,
+    badge: 'حماية معتمدة للقمح',
+    recommendedFor: 'مكافحة الصدأ الأصفر والتبقعات في القمح والشعير',
+    dosage: '100 جم لكل فدان',
+    deliveryDays: 'شحن فوري لجميع المراكز',
+    stock: 32,
+    image: 'https://images.unsplash.com/photo-1628352081506-83c43123ed6d?auto=format&fit=crop&w=500&q=80'
+  },
+  {
+    id: 'prod-4',
+    name: 'ميلانو بوتاس-كي بلس (Milano K-Plus)',
+    supplier: 'شركة ميلانو للأسمدة والمخصبات',
+    category: 'أسمدة ومقويات مناعة',
+    activeIngredient: 'بوتاسيوم فوسفايت 45% + بورون 2%',
+    price: 310,
+    originalPrice: 360,
+    unit: 'جركن 5 لتر',
+    rating: 4.9,
+    reviewsCount: 167,
+    badge: 'حماية من موجات الصقيع',
+    recommendedFor: 'تحجيم الثمار ورفع مناعة النبات ضد الصدمات الحرارية',
+    dosage: '2 لتر للفدان حقناً بالسمادة',
+    deliveryDays: 'شحن فوري',
+    stock: 54,
+    image: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=500&q=80'
+  },
+  {
+    id: 'prod-5',
+    name: 'أجرو-كبريكس 50% نحاس حر',
+    supplier: 'مجموعة الموزعين المعتمدين',
+    category: 'مبيدات وقائية بكتيرية وفطرية',
+    activeIngredient: 'أوكسي كلورور النحاس 50% Cu',
+    price: 290,
+    originalPrice: 330,
+    unit: 'كيس 1 كجم',
+    rating: 4.7,
+    reviewsCount: 84,
+    badge: 'مطهر فطري شامل',
+    recommendedFor: 'اللفحة المتأخرة والتبقعات البكتيرية على الخضار',
+    dosage: '250 جم لكل 100 لتر ماء',
+    deliveryDays: 'خلال 48 ساعة',
+    stock: 40,
+    image: 'https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?auto=format&fit=crop&w=500&q=80'
+  },
+  {
+    id: 'prod-6',
+    name: 'بيو-رووت محفز التربة والجذور الذكي',
+    supplier: 'شركة النيل للتقنيات الزراعية',
+    category: 'محسنات تربة ومحافظ على الرطوبة',
+    activeIngredient: 'مستخلص طحالب بحرية + هيوميك وفولفيك أسيد',
+    price: 260,
+    originalPrice: 300,
+    unit: 'عبوة 1 لتر',
+    rating: 4.8,
+    reviewsCount: 112,
+    badge: 'يوفر 25% من استهلاك مياه الري',
+    recommendedFor: 'رفع احتفاظ التربة الرملية والطينية بالرطوبة الفضائية',
+    dosage: '1 لتر للفدان مع مياه الري',
+    deliveryDays: 'شحن سريع للمزرعة',
+    stock: 60,
+    image: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=500&q=80'
+  },
+  {
+    id: 'prod-moghra-1',
+    name: 'ميلانو ديسالت بلس (طارد الأملاح الكلسي)',
+    supplier: 'شركة ميلانو للمستلزمات الزراعية',
+    category: 'طارد أملاح ومعالج ملوحة التربة والماء',
+    activeIngredient: 'بولي هيدروكسي كربوكسيل 25% + كالسيوم عضوي مخلبي 14%',
+    price: 490,
+    originalPrice: 580,
+    unit: 'جركن 5 لتر عالي التركيز',
+    rating: 4.95,
+    reviewsCount: 188,
+    badge: 'مُصمم لآبار المغرة والملوحة الشديدة',
+    recommendedFor: 'طرد الصوديوم وحماية النخيل والزيتون من الملوحة',
+    dosage: '2 - 3 لتر للفدان مع مياه الري كل 15 يوماً',
+    deliveryDays: 'شحن مخصص لأراضي المغرة والريف المصري خلال 24-48 ساعة',
+    stock: 85,
+    image: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=500&q=80'
+  },
+  {
+    id: 'prod-moghra-2',
+    name: 'ميلانو سلفا-بي إتش (مخفض قلوية التربة الذكي)',
+    supplier: 'شركة ميلانو للمستلزمات الزراعية',
+    category: 'منظم ومنخفض الـ pH ومحرر العناصر',
+    activeIngredient: 'حمض بولي فوسفوريك نقي 60% + كبريت مخلب عضوي',
+    price: 360,
+    originalPrice: 420,
+    unit: 'جركن 5 لتر',
+    rating: 4.9,
+    reviewsCount: 142,
+    badge: 'يضبط الـ pH بأمان دون حرق الجذور',
+    recommendedFor: 'خفض pH التربة من 8.0 إلى 6.8 لتحرير الفوسفور والحديد',
+    dosage: '1.5 لتر للفدان حقناً بالسمادة أسبوعياً',
+    deliveryDays: 'شحن سريع للمزارع',
+    stock: 92,
+    image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80'
+  }
+];
+
+export const NASA_SATELLITE_FEED = {
+  satellites: [
+    { name: 'NASA Landsat 9', resolution: '30m Multispectral', orbit: 'Sun-synchronous', lastSync: 'منذ 45 دقيقة' },
+    { name: 'ESA Sentinel-2', resolution: '10m High-Res', bands: 'RGB + RedEdge + SWIR', lastSync: 'منذ ساعة' },
+    { name: 'NASA MODIS (Terra/Aqua)', purpose: 'حرارة سطح الأرض والرطوبة', lastSync: 'مباشر (Real-Time)' }
+  ],
+  weatherMetrics: {
+    temp: 24,
+    tempUnit: '°C',
+    tempFeelsLike: 23,
+    tempMin: 8,
+    tempMax: 26,
+    humidity: 42,
+    soilMoisture: 38, // percentage
+    soilStatus: 'رطوبة متوسطة - تحتاج ري خفيف',
+    soilDepth: '0 - 15 سم (منطقة الجذور النشطة)',
+    ndvi: 0.76, // 0 to 1
+    ndviStatus: 'كتلة نباتية ممتازة وخضرة عالية',
+    solarRadiation: '5.8 kWh/m²',
+    windSpeed: '12 كم/ساعة',
+    windDirection: 'شمالية غربية',
+    evapotranspiration: '3.4 مم/يوم (معدل البخر والنتح)',
+    frostRisk: 'مرتفع غداً فجراً'
+  },
+  frostAlert: {
+    title: 'تنبيه مناخي فضائي عاجل: موجة صقيع غداً فجراً',
+    description: 'تُظهر محاكاة درجات حرارة أسطح الأرض (LST) من قمر ناسا تدفق كتلة هوائية قطبية جافة تؤدي لانخفاض مفاجئ لـ 6° درجات مئوية مع رياح هادئة.',
+    actionRequired: 'يرجى ري الأرض الليلة رية خفيفة وتفعيل رش الكبريت أو البوتاسيوم لرفع السعة الحرارية للتربة وحماية شعيرات الجذور من التلف.'
+  },
+  irrigationSchedule: [
+    { day: 'اليوم (السبت)', duration: '45 دقيقة تنقيط', timing: 'مساءً (6:00 م)', reason: 'تدفئة التربة قبل انخفاض الحرارة', status: 'موصى به الليلة' },
+    { day: 'الأحد', duration: 'إيقاف الري تماماً', timing: '--', reason: 'ذروة برودة الفجر لمنع اختناق الجذور', status: 'توقف مؤقت' },
+    { day: 'الإثنين', duration: '30 دقيقة ري', timing: 'صباحاً (10:00 ص)', reason: 'تعويض النتح مع شروق الشمس والتدفئة', status: 'مجدول' },
+    { day: 'الثلاثاء', duration: '50 دقيقة مع تسميد', timing: 'صباحاً (8:30 ص)', reason: 'إضافة البوتاسيوم والأحماض المنشطة', status: 'مجدول' },
+    { day: 'الأربعاء', duration: '40 دقيقة تنقيط', timing: 'مساءً (5:00 م)', reason: 'حفظ الرطوبة عند مستوى 45%', status: 'مجدول' }
+  ]
+};

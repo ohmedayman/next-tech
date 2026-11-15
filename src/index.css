@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    border-color: #1F1F23;
+  }
+  
+  html {
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  body {
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+
+  /* Custom dark scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #050505;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #262626;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #B27BFF;
+  }
+}
+
+@layer utilities {
+  .glow-purple {
+    box-shadow: 0 0 15px #B27BFF;
+  }
+  .glow-purple-sm {
+    box-shadow: 0 0 10px rgba(178, 123, 255, 0.4);
+  }
+  .glow-purple-lg {
+    box-shadow: 0 0 25px rgba(178, 123, 255, 0.6);
+  }
+  .border-glow {
+    border-color: rgba(178, 123, 255, 0.3);
+  }
+  .border-glow:hover {
+    border-color: #B27BFF;
+    box-shadow: 0 0 15px rgba(178, 123, 255, 0.35);
+  }
+  .bg-glass {
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+  }
+}
+
+/* Star background animation */
+.stars-bg {
+  background-image: 
+    radial-gradient(1.5px 1.5px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 40px 70px, rgba(178, 123, 255, 0.8), rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, rgba(178, 123, 255, 0.9), rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 230px 180px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 300px 80px, #b27bff, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 370px 220px, #ffffff, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 400px 400px;
+}
